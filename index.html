@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Tip Calculator</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+
+                    <label for="">Bill Amount</label>
+                    <div class="mb-3">
+                      <input type="text" class="form-control" id="billAmount" aria-describedby="billAmount">
+                    </div>
+            
+                    <select class="form-select" 
+                        id="discountPercentage"
+                    aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                      </select>
+            
+
+                      <label for="">Sharing People</label>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="sharingPeople" >
+                      </div>
+                  
+                    <button class="btn 
+                    btn-primary"
+                    id="calcButton"
+                    onclick="calculateTip()">Calculate</button>
+                      <br>
+
+                    <label for="">your tip amount is</label>
+                    <input type="text" id="showTip">
+            
+            </div>
+        </div>
+    </div>
+ 
+
+    <script>
+console.log('tip calculator');
+
+const calculateTip =  () => {
+    const showTipDiv = document.getElementById("showTip");
+    const billAmount = document.getElementById("billAmount");
+    const sharingPeople = document.getElementById("sharingPeople");
+    const discountPercentage = document.getElementById("discountPercentage");
+
+    const discountAmount = (billAmount.value * discountPercentage.value) / 100;
+
+    const billPerPerson = discountAmount / sharingPeople.value;
+    showTipDiv.value = `$`+ billPerPerson;
+}
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+ 
+  </body>
+</html>
